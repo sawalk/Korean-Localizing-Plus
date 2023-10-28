@@ -11,9 +11,6 @@
  * 통계의 "동물 우화집"을 "도감"으로 수정
 ## Before & After
 ![1](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/4788bc1f-88f0-4028-baa9-949272861dbd)
-----
 ![2](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/dd9f7409-0e47-48db-8faf-412b9b1bd08a)
-----
 ![3](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/e044194d-d090-450b-ac7a-8c4a9c30aa6a)
-----
 ![4](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/ca51b131-48c2-4b91-b893-1bb40d3413e6)
