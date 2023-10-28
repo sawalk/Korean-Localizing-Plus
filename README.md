@@ -8,10 +8,10 @@
  * 메인 메뉴 **한국어 로고 적용**
  * 통계의 "동물 우화집"을 "도감"으로 수정
 ## Before & After
-![!_korean_localizing_plus_preview_01](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/b3037ca9-c17b-4e05-a11b-98248ba41b39)
+![1](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/4788bc1f-88f0-4028-baa9-949272861dbd)
 - - -
-![!_korean_localizing_plus_preview_02](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/fc3b947f-c00d-4c94-bbdf-1bb807f8bc26)
+![2](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/dd9f7409-0e47-48db-8faf-412b9b1bd08a)
 - - -
-![!_korean_localizing_plus_preview_03](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/46c32d4f-0b8f-456f-8115-8c314a341174)
+![3](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/e044194d-d090-450b-ac7a-8c4a9c30aa6a)
 - - -
-![!_korean_localizing_plus_preview_04](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/a84eecd3-916d-4978-9200-f9522dcd5f1b)
+![4](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/ca51b131-48c2-4b91-b893-1bb40d3413e6)
