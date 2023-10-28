@@ -1,3 +1,5 @@
+![preview](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/15796204-d201-4448-b21f-549be0348381)
+
 # Repentance Korean Localizing Plus
 아이작의 번제: 리펜턴스에서 추가된 한국어 번역을 개선하는 모드입니다.
 ## Features
