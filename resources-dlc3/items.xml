@@ -470,7 +470,7 @@
 	<passive description="#GLAUCOMA_DESCRIPTION" gfx="Collectibles_460_Glaucoma.png" id="460" name="#GLAUCOMA_NAME" />
 	<passive description="알까기 눈물" gfx="Collectibles_461_Parasitoid.png" id="461" name="#PARASITOID_NAME" cache="range" />
 	<passive achievement="299" description="#EYE_OF_BELIAL_DESCRIPTION" gfx="Collectibles_462_EyeOfBelial.png" id="462" name="#EYE_OF_BELIAL_NAME" cache="range tearflag" devilprice="2" />
-	<passive description="#SULFURIC_ACID_DESCRIPTION" gfx="Collectibles_463_SulfuricAcid.png" id="463" name="#SULFURIC_ACID_NAME" cache="damage tearcolor tearflag" />
+	<passive description="#SULFURIC_ACID_DESCRIPTION" gfx="Collectibles_463_SulfuricAcid.png" id="463" name="황" cache="damage tearcolor tearflag" />
 	<passive achievement="297" description="#GLYPH_OF_BALANCE_DESCRIPTION" gfx="Collectibles_464_GlyphOfBalance.png" id="464" name="#GLYPH_OF_BALANCE_NAME" soulhearts="4" />
 	<passive description="#ANALOG_STICK_DESCRIPTION" gfx="Collectibles_465_AnalogStick.png" id="465" name="#ANALOG_STICK_NAME" cache="firedelay" />
 	<passive description="#CONTAGION_DESCRIPTION" gfx="Collectibles_466_Contagion.png" id="466" name="#CONTAGION_NAME" />
