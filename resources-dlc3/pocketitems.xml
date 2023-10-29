@@ -154,7 +154,7 @@
 	<pilleffect announcer2="796" id="36" name="#POWER_PILL_NAME" announcer="407" announcerdelay="5" class="1+" mimiccharge="3" />
 	<pilleffect announcer2="797" id="37" name="#RETRO_VISION_NAME" announcer="410" announcerdelay="30" class="1-" mimiccharge="6" />
 	<pilleffect announcer2="798" id="38" name="#FRIENDS_TILL_THE_END_NAME" announcer="452" announcerdelay="30" class="1+" mimiccharge="1" />
-	<pilleffect announcer2="799" id="39" name="#XLAX_NAME" announcer="443" announcerdelay="30" class="0-" mimiccharge="1" />
+	<pilleffect announcer2="799" id="39" name="설사약" announcer="443" announcerdelay="30" class="0-" mimiccharge="1" />
 	<pilleffect announcer2="800" id="40" name="#SOMETHINGS_WRONG_NAME" announcer="444" announcerdelay="30" class="0+" mimiccharge="1" />
 	<pilleffect announcer2="801" id="41" name="#IM_DROWSY_NAME" announcer="454" announcerdelay="30" class="1" mimiccharge="3" />
 	<pilleffect announcer2="802" id="42" name="#IM_EXCITED_NAME" announcer="453" announcerdelay="30" class="1" mimiccharge="6" />
