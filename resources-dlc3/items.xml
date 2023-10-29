@@ -386,7 +386,7 @@
 	<passive description="#PUPULA_DUPLEX_DESCRIPTION" gfx="Collectibles_379_PupulaDuplex.png" id="379" name="#PUPULA_DUPLEX_NAME" cache="tearflag" />
 	<passive description="#PAY_TO_PLAY_DESCRIPTION" gfx="Collectibles_380_PayToPlay.png" id="380" name="#PAY_TO_PLAY_NAME" coins="5" />
 	<passive achievement="188" description="#EDENS_BLESSING_DESCRIPTION" gfx="Collectibles_381_EdensBlessing.png" id="381" name="#EDENS_BLESSING_NAME" cache="firedelay" />
-	<active description="#FRIENDLY_BALL_DESCRIPTION" gfx="Collectibles_382_FriendlyBall.png" id="382" name="익숙한 공" maxcharges="2" />
+	<active description="#FRIENDLY_BALL_DESCRIPTION" gfx="Collectibles_382_FriendlyBall.png" id="382" name="프렌드볼" maxcharges="2" />
 	<active description="#TEAR_DETONATOR_DESCRIPTION" gfx="Collectibles_383_TearDetonator.png" id="383" name="#TEAR_DETONATOR_NAME" shopprice="10" maxcharges="450" chargetype="timed" />
 	<familiar description="#LIL_GURDY_DESCRIPTION" gfx="Collectibles_384_LilGurdy.png" id="384" name="#LIL_GURDY_NAME" />
 	<familiar description="#BUMBO_DESCRIPTION" gfx="Collectibles_385_Bumbo.png" id="385" name="#BUMBO_NAME" />
@@ -400,7 +400,7 @@
 	<passive achievement="220" description="#SERPENTS_KISS_DESCRIPTION" gfx="Collectibles_393_SerpentsKiss.png" id="393" name="#SERPENTS_KISS_NAME" />
 	<passive description="#MARKED_DESCRIPTION" gfx="Collectibles_394_Marked.png" id="394" name="#MARKED_NAME" cache="firedelay range" />
 	<passive description="#TECH_X_DESCRIPTION" gfx="Collectibles_395_TechX.png" id="395" name="#TECH_X_NAME" cache="all" />
-	<active description="#VENTRICLE_RAZOR_DESCRIPTION" gfx="Collectibles_396_VentricleRazor.png" id="396" name="#VENTRICLE_RAZOR_NAME" shopprice="10" />
+	<active description="숏컷 생성기" gfx="Collectibles_396_VentricleRazor.png" id="396" name="#VENTRICLE_RAZOR_NAME" shopprice="10" />
 	<passive description="#TRACTOR_BEAM_DESCRIPTION" gfx="Collectibles_397_TractorBeam.png" id="397" name="#TRACTOR_BEAM_NAME" cache="firedelay tearflag range shotspeed" />
 	<passive description="#GODS_FLESH_DESCRIPTION" gfx="Collectibles_398_GodsFlesh.png" id="398" name="#GODS_FLESH_NAME" cache="tearcolor" />
 	<passive achievement="186" description="#MAW_OF_THE_VOID_DESCRIPTION" gfx="Collectibles_399_MawOfTheVoid.png" id="399" name="#MAW_OF_THE_VOID_NAME" cache="tearcolor" devilprice="2" />
@@ -631,7 +631,7 @@
 	<passive	id="603"	gfx="Collectibles_603_BatteryPack.png" name="#BATTERY_PACK_NAME" description="#BATTERY_PACK_DESCRIPTION" />
 	<active		id="604"	gfx="Collectibles_604_MomsBracelet.png" name="#MOMS_BRACELET_NAME" description="#MOMS_BRACELET_DESCRIPTION" shopprice="10" maxcharges="30" chargetype="timed" />
 	<active		id="605"	gfx="Collectibles_605_TheScooper.png" name="#THE_SCOOPER_NAME" description="#THE_SCOOPER_DESCRIPTION" maxcharges="3" cache="familiars" />
-	<passive	id="606"	gfx="Collectibles_606_OculusRift.png" name="#OCULAR_RIFT_NAME" description="#OCULAR_RIFT_DESCRIPTION" devilprice="2" />
+	<passive	id="606"	gfx="Collectibles_606_OculusRift.png" name="안구 균열" description="#OCULAR_RIFT_DESCRIPTION" devilprice="2" />
 	<familiar	id="607"	gfx="Collectibles_607_BoiledBaby.png" name="#BOILED_BABY_NAME" description="#BOILED_BABY_DESCRIPTION" />
 	<familiar	id="608"	gfx="Collectibles_608_FreezerBaby.png" name="#FREEZER_BABY_NAME" description="#FREEZER_BABY_DESCRIPTION" />
 	<active		id="609"	achievement="448" gfx="Collectibles_609_FloriansD6.png" name="#ETERNAL_D6_NAME" description="#ETERNAL_D6_DESCRIPTION" maxcharges="2" />
