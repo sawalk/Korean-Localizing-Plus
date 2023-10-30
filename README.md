@@ -13,7 +13,7 @@
   * OCULAR_RIFT_NAME(오큘러 리프트) → **안구 균열**
   * SHOT_SPEED_UP_NAME(공격 속도 증가) → **투사체 속도 증가**
   * SHOT_SPEED_DOWN_NAME(공격 속도 감소) → **투사체 속도 감소**
-  * SULFUR_NAME(유황) → **황**
+  * SULFURIC_ACID_NAME(유황, c463) → **황**
   * XLAX_NAME(X-랙스) → **설사약**
   * LARGE_ZIT_DESCRIPTION(무음 촬영) → **여드름 눈물**
   * PARASITOID_DESCRIPTION(달걀 눈물) → **알까기 눈물**
