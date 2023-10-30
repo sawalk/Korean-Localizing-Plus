@@ -25,11 +25,13 @@
  2. (아이작 설치 경로)\Tools 폴더의 ResourceExtractor로 리소스 추출
  3. resources-dl3.kr\gfx\cutscenes으로 가서 위의 srt 파일 붙여넣기
 
-## Before & After
-![1](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/4788bc1f-88f0-4028-baa9-949272861dbd)
+## Screenshots
+![screenshot_1](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/449766c2-f6fc-420a-9e8d-732521bc4038)
+![screenshot_2](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/55f8b55b-feb7-45a9-a17a-c92e22d295bf)
+![screenshot_3](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/cf3f3518-b625-4346-88db-e8dcd1ca4965)
+![screenshot_4](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/7147def3-5734-4606-9c51-c5a93aae9580)
+![screenshot_5](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/ef9d840d-5708-41b7-acca-a67923cf2a80)
+![screenshot_6](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/8fd5780a-cc9e-4314-8d45-b9dbf7f697ff)
+![screenshot_7](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/956b70d0-2913-495d-a101-7ad033fad567)
+![screenshot_8](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/5695fe4c-6c7b-4540-8c09-9d2299e2bf8e)
 
-![2](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/dd9f7409-0e47-48db-8faf-412b9b1bd08a)
-
-![3](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/e044194d-d090-450b-ac7a-8c4a9c30aa6a)
-
-![4](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/ca51b131-48c2-4b91-b893-1bb40d3413e6)
