@@ -31,7 +31,6 @@
 ![screenshot_3](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/cf3f3518-b625-4346-88db-e8dcd1ca4965)
 ![screenshot_4](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/7147def3-5734-4606-9c51-c5a93aae9580)
 ![screenshot_5](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/ef9d840d-5708-41b7-acca-a67923cf2a80)
-![screenshot_6](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/8fd5780a-cc9e-4314-8d45-b9dbf7f697ff)
-![screenshot_7](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/956b70d0-2913-495d-a101-7ad033fad567)
-![screenshot_8](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/5695fe4c-6c7b-4540-8c09-9d2299e2bf8e)
+![screenshot_6](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/956b70d0-2913-495d-a101-7ad033fad567)
+![screenshot_7](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/5695fe4c-6c7b-4540-8c09-9d2299e2bf8e)
 
