@@ -1,5 +1,5 @@
 ---
-name: Bug
+name: Bug report
 about: I'm not responsible for errors between modes.
 title: ''
 labels: Bug
@@ -26,4 +26,4 @@ assignees: sawalk
  - Korean Localizing Plus version: (e.g. v1.2)
 
 **Additional context**
-Add any other context about the problem here.
+(Add any other context about the problem here.)
