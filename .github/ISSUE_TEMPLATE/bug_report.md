@@ -25,5 +25,5 @@ assignees: sawalk
  - Subscribed mods: (e.g. EID, epiphany...)
  - Korean Localizing Plus version: (e.g. v1.2)
 
-**Additional context**
+**Additional context:**
 (Add any other context about the problem here.)
