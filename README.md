@@ -3,9 +3,7 @@
 # Repentance Korean Localizing Plus
 아이작의 번제: 리펜턴스에서 추가된 한국어 번역을 개선하는 모드입니다.
 
-## How to apply
-![적용](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/c2e7c2b9-adc2-4018-bc16-ac1471fbe5c1)
-# Features
+## Features
 * **오프닝과 에필로그의 한국어 더빙** 추가
 * 아빠의 노트 획득 후 나오는 음성의 자막 추가 (Thanks by Blackcreamtea)
 * 메인 메뉴 **한국어 로고 적용**
@@ -31,6 +29,8 @@
  2. (아이작 설치 경로)\Tools 폴더의 ResourceExtractor로 리소스 추출
  3. resources-dl3.kr\gfx\cutscenes으로 가서 위의 srt 파일 붙여넣기
 
+## How to apply
+![적용](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/c2e7c2b9-adc2-4018-bc16-ac1471fbe5c1)
 ## Screenshots
 ![screenshot_1](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/449766c2-f6fc-420a-9e8d-732521bc4038)
 ![screenshot_2](https://github.com/sawalk/Korean-Localizing-Plus/assets/76607639/55f8b55b-feb7-45a9-a17a-c92e22d295bf)
