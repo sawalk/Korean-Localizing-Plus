@@ -54,7 +54,7 @@ local items = {
     {341, "찢어진 사진", "공격 속도, 투사체 속도 증가"},
     {371, "탑의 저주", "저주받은 느낌이야…"},
     {373, "명사수", "정확함은 힘을 가져다주지!"},
-    {382, "프렌들리 볼", "넌 내 거야!"},
+    {382, "프렌들리볼", "넌 내 거야!"},
     {396, "심실 절단기", "숏컷 생성기"},
     {411, "욕망의 피", "그들의 피가 분노를 가져오리니!"},
     {444, "연필", "놈은 피를 흘린다"},
@@ -66,7 +66,7 @@ local items = {
     {489, "무한 주사위", "영원히 리롤"},
     {495, "유령 고추", "화염의 눈물"},
     {499, "성찬", "무운을 빌지"},
-    {502, "커다란 여드름", "여드름 눈물"},
+    {502, "커다란 여드름", "여드름 공격"},
     {507, "날카로운 빨대", "좀 더 피를 줘!"},
     {519, "작은 섬망", "기뻐 날뛰는 친구"},
     {555, "황금 면도날", "고통의 보람"},
@@ -86,13 +86,21 @@ if EID then
     -- Adds trinkets defined in trinkets
     for _, trinket in ipairs(trinkets) do
         local EIDdescription = EID:getDescriptionObj(5, 350, trinket[1]).Description
-        EID:addTrinket(trinket[1], EIDdescription, trinket[2], "en_us")
+        local trinketName = trinket[2]
+        if EID.Config.TranslateItemName == 3 then
+            trinketName = trinketName .. " (" .. EID:getDescriptionObj(5, 350, trinket[1]).Name .. ")"
+        end
+        EID:addTrinket(trinket[1], EIDdescription, trinketName, "ko_kr")
     end
 
     -- Adds items defined in items
     for _, item in ipairs(items) do
         local EIDdescription = EID:getDescriptionObj(5, 100, item[1]).Description
-        EID:addCollectible(item[1], EIDdescription, item[2], "en_us")
+        local itemName = item[2]
+        if EID.Config.TranslateItemName == 3 then
+            itemName = itemName .. " (" .. EID:getDescriptionObj(5, 100, item[1]).Name .. ")"
+        end
+        EID:addCollectible(item[1], EIDdescription, itemName, "ko_kr")
     end
 end
 
