@@ -60,7 +60,7 @@ local items = {
     {444, "연필", "놈은 피를 흘린다"},
     {447, "납작한 콩", "난 울 때마다…잇몸이 시리다…"},
     {461, "기생충", "알까기 눈물"},
-    {467, "손가락!", "어딜 만져! 어딜 만지냐고!"},
+    --> {467, "손가락!", "어딜 만져! 어딜 만지냐고!"},
     {476, "1면 주사위", "무엇이 나올까?"},
     {477, "공허", "먹어 치운다"},
     {489, "무한 주사위", "영원히 리롤"},
@@ -181,7 +181,6 @@ function mod:onUpdate()
     local player = Isaac.GetPlayer(0)
     local activePillColor = player:GetPill(0)
     
-    -- Check PHD and False PHD
     local hasPHD = player:HasCollectible(CollectibleType.COLLECTIBLE_PHD)
     local hasFalsePHD = player:HasCollectible(CollectibleType.COLLECTIBLE_FALSE_PHD)
 
@@ -210,7 +209,6 @@ function mod:onRender()
         local screenHeight = Isaac.GetScreenHeight()
         local renderPosition
 
-        -- Get HUD offset
         local hudOffset = Options.HUDOffset
         local offsetX, offsetY
 
