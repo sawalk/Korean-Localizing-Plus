@@ -1,0 +1,14 @@
+<sounds root="sfx/">
+	<sound name="DADS_NOTE_KOREAN_1">
+		<sample weight="1" path="mom and dad clip 1 mastered.wav" />
+	</sound>
+	<sound name="DADS_NOTE_KOREAN_2">
+		<sample weight="1" path="mom and dad clip 2 mastered.wav" />
+	</sound>
+	<sound name="DADS_NOTE_KOREAN_3">
+		<sample weight="1" path="mom and dad clip 3 mastered.wav" />
+	</sound>
+	<sound name="DADS_NOTE_KOREAN_4">
+		<sample weight="1" path="mom and dad clip 4 mastered.wav" />
+	</sound>
+</sounds>

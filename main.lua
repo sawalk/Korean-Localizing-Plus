@@ -34,12 +34,30 @@ local function onRender()
         return
     end
     if VoiceSFX:IsPlaying(598) then
-        RenderSub("backwards1")
+        VoiceSFX:Stop(598)
+        VoiceSFX:Play(SoundEffect.SOUND_NULL, 1.0, 0, false, 1.0)
+        VoiceSFX:Play(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_1"))
     elseif VoiceSFX:IsPlaying(599) then
-        RenderSub("backwards2")
+        VoiceSFX:Stop(599)
+        VoiceSFX:Play(SoundEffect.SOUND_NULL, 1.0, 0, false, 1.0)
+        VoiceSFX:Play(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_2"))
     elseif VoiceSFX:IsPlaying(600) then
-        RenderSub("backwards3")
+        VoiceSFX:Stop(600)
+        VoiceSFX:Play(SoundEffect.SOUND_NULL, 1.0, 0, false, 1.0)
+        VoiceSFX:Play(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_3"))
     elseif VoiceSFX:IsPlaying(601) then
+        VoiceSFX:Stop(601)
+        VoiceSFX:Play(SoundEffect.SOUND_NULL, 1.0, 0, false, 1.0)
+        VoiceSFX:Play(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_4"))
+    end
+
+    if VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_1")) then
+        RenderSub("backwards1")
+    elseif VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_2")) then
+        RenderSub("backwards2")
+    elseif VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_3")) then
+        RenderSub("backwards3")
+    elseif VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_4")) then
         RenderSub("backwards4")
     end
 end
@@ -55,12 +73,14 @@ local items = {
     {371, "탑의 저주", "저주받은 느낌이야…"},
     {373, "명사수", "정확함은 힘을 가져다주지!"},
     {382, "프렌들리볼", "넌 내 거야!"},
+    {396, "기계 X", "레이저 고리 눈물"},
     {396, "심실 절단기", "숏컷 생성기"},
     {411, "욕망의 피", "그들의 피가 분노를 가져오리니!"},
     {444, "연필", "놈은 피를 흘린다"},
     {447, "납작한 콩", "난 울 때마다…잇몸이 시리다…"},
+    {451, "타로 천", "미래가 보인다"},
     {461, "기생충", "알까기 눈물"},
-    --> {467, "손가락!", "어딜 만져! 어딜 만지냐고!"},
+    {467, "핑거!", "어딜 가리켜! 어딜 가리키냐고!"},
     {476, "1면 주사위", "무엇이 나올까?"},
     {477, "공허", "먹어 치운다"},
     {489, "무한 주사위", "영원히 리롤"},
@@ -69,12 +89,12 @@ local items = {
     {502, "커다란 여드름", "여드름 공격"},
     {507, "날카로운 빨대", "좀 더 피를 줘!"},
     {519, "작은 섬망", "기뻐 날뛰는 친구"},
+    {524, "기계 장치 제로", "정전기 눈물!"},
     {555, "황금 면도날", "고통의 보람"},
     {556, "황", "일시적 악마 형상"},
     {625, "대왕 버섯", "나도 이제 큰 형아야!"},
     {709, "수플렉스!", "천사도 이길 기술"},
     {725, "과민성 대장 증후군", "뱃속이 꾸물거린다"},
-    --{729, "참수 공격", "머리 받아라!"},
 }
   
 local trinkets = {
@@ -82,6 +102,7 @@ local trinkets = {
     {145, "올백", "행운 수직 상승. 그 행운을 잃지 말라구!"},
 }
 
+--[[
 if EID then
     -- Adds trinkets defined in trinkets
     for _, trinket in ipairs(trinkets) do
@@ -102,7 +123,7 @@ if EID then
         end
         EID:addCollectible(item[1], EIDdescription, itemName, "ko_kr")
     end
-end
+end ]]
 
 if Encyclopedia then
     -- Adds trinkets defined in trinkets
