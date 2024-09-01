@@ -63,9 +63,7 @@ local function onRender()
 end
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, onRender)
 
--- {itemId, 'name', 'desc'}
 local items = {
-    --$$$ITEMS-START$$$
     {337, "부서진 시계", "망가진 것 같다"},
     {354, "식품 완구", "체력 증가. 상품까지 먹지는 마세요!"},
     {355, "엄마의 진주", "사거리 + 행운 증가"},
@@ -98,8 +96,7 @@ local items = {
 }
   
 local trinkets = {
-    --$$$TRINKETS-START$$$
-    {145, "올백", "행운 수직 상승. 그 행운을 잃지 말라구!"},
+    {145, "올백", "행운 수직 상승. 잃지 말라구!"},
 }
 
 --[[
@@ -126,7 +123,6 @@ if EID then
 end ]]
 
 if Encyclopedia then
-    -- Adds trinkets defined in trinkets
     for _,trinket in ipairs(trinkets) do
         Encyclopedia.UpdateTrinket(trinket[1], {
             Name = trinket[2],
@@ -134,7 +130,6 @@ if Encyclopedia then
         })
     end
     
-    -- Adds items defined in items
     for _, item in ipairs(items) do
         Encyclopedia.UpdateItem(item[1], {
             Name = item[2],
@@ -143,7 +138,6 @@ if Encyclopedia then
     end
 end
 
--- Handle displaying trinket names
 if #trinkets ~= 0 then
     local t_queueLastFrame
     local t_queueNow
@@ -160,7 +154,6 @@ if #trinkets ~= 0 then
     end)
 end
 
--- Handle displaying item names
 if #items ~= 0 then
     local i_queueLastFrame
     local i_queueNow
