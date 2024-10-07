@@ -1,4 +1,4 @@
-local mod = RegisterMod("　", 1)
+local mod = RegisterMod("Korean Localizing Plus", 1)
 local data = include('data')
 local json = require('json')
 local game = Game()
@@ -15,7 +15,7 @@ local messageDisplayedTime = 0
 
 local function checkLanguage()
   if Options.Language ~= "kr" then
-    Isaac.ConsoleOutput("Korean Localizing Plus - Playing in a language other than Korean is not recommended!\n")
+    print("Korean Localizing Plus - Playing in a language other than Korean is not recommended!\n")
     showMessage = true
   end
 end
@@ -280,7 +280,7 @@ function mod:onUpdate()
   local player = Isaac.GetPlayer(0)
   local activePillColor = player:GetPill(0)
   
-  local hasPHD = player:HasCollectible(CollectibleType.OLCLECTIBLE_PHD)
+  local hasPHD = player:HasCollectible(CollectibleType.COLLECTIBLE_PHD)
   local hasFalsePHD = player:HasCollectible(CollectibleType.COLLECTIBLE_FALSE_PHD)
 
   if activePillColor ~= PillColor.PILL_NULL then
