@@ -15,7 +15,7 @@ local messageDisplayedTime = 0
 
 local function checkLanguage()
   if Options.Language ~= "kr" then
-    print("Korean Localizing Plus - Playing in a language other than Korean is not recommended!\n")
+    print("\n\n[Korean Localizing Plus]\nPlaying in a language other than Korean is not recommended!\nPlease turn off the Korean Localizing Plus,\nset the language to Korean,\nand turn the Korean Localizing Plus back on.\n")
     showMessage = true
   end
 end
