@@ -1,17 +1,41 @@
 local mod = RegisterMod("Korean Localizing Plus", 1)
 local data = include('data')
 local json = require('json')
+local jsonData = json.decode(data)
 local game = Game()
 local SubSprite = Sprite()
 local VoiceSFX = SFXManager()
+
+-- MCM
+local AlertSettings = {
+  enableAlert = true
+}
+
+if ModConfigMenu then
+  ModConfigMenu.AddSetting("KLP", "Alert Settings", {
+      Type = ModConfigMenu.OptionType.BOOLEAN,
+      CurrentSetting = function() return AlertSettings.enableAlert end,
+      Display = function() return "Alert: " .. (AlertSettings.enableAlert and "Enable" or "Disable") end,
+      OnChange = function(val) AlertSettings.enableAlert = val end,
+      Info = {"!!! This is not working! just test !!!\n!!! This is not working! just test !!!\nGet notified when important changes are made."}
+  })
+end
 
 -- 한국어가 아닙니다!
 local font = Font()
 font:Load("font/cjk/lanapixel.fnt")
 
 local showMessage = false
+local showMessage2
+if KoreanVoiceDubbing then
+  showMessage2 = false
+else
+  showMessage2 = true
+end
 local messageTime = 150
+local messageTime2 = 150
 local messageDisplayedTime = 0
+local messageDisplayedTime2 = 0
 
 local function checkLanguage()
   if Options.Language ~= "kr" then
@@ -25,6 +49,15 @@ local function updateMessage()
     messageDisplayedTime = messageDisplayedTime + 1
     if messageDisplayedTime >= messageTime then
       showMessage = false
+    end
+  end
+end
+
+local function updateMessage2()
+  if showMessage2 then
+    messageDisplayedTime2 = messageDisplayedTime2 + 1
+    if messageDisplayedTime2 >= messageTime2 then
+      showMessage2 = false
     end
   end
 end
@@ -44,7 +77,22 @@ local function renderMessage()
   end
 end
 
--- (구)리펜턴스 한국어 자막
+local function renderMessage2()
+  local renderMessageWidth
+  if showMessage2 then
+    if Options.MaxScale == 3 and Options.Fullscreen == true then
+      renderMessageWidth = 0.66666
+      renderMessageY = 242
+    else
+      renderMessageWidth = 0.5
+      renderMessageY = 240
+    end
+    font:DrawStringScaledUTF8("한국어 더빙 기능이 다른 모드로 분리되었습니다! https://steamcommunity.com/workshop/filedetails/?id=3360615255",10,230,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("이 메시지는 11월 18일까지 표시됩니다. 한국어 더빙 모드를 설치하시면 이 메시지는 표시되지 않습니다.",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+  end
+end
+
+-- (구)리펜턴스 한국어 모드
 if KoreanFontChange then
   SubSprite:Load("gfx/cutscenes/backwards_kfc.anm2", true)
 else
@@ -70,34 +118,36 @@ end
 
 mod.isVisible = true
 mod.IsHidden = false
+
 local function onRender()
   if Input.IsButtonTriggered(39, 0) then
-      mod.IsHidden = not mod.IsHidden
+    Music:Play(101)
+    mod.IsHidden = not mod.IsHidden
   end
   if mod.IsHidden then return end
 
   for i = 598, 601 do
+    if KoreanVoiceDubbing then
+      if VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_" .. (i - 597))) then
+        RenderSub("backwards" .. (i - 597))
+      end
+    else
       if VoiceSFX:IsPlaying(i) then
-          VoiceSFX:Stop(i)
-          VoiceSFX:Play(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_" .. (i - 597)))
+        RenderSub("backwards" .. (i - 597))
       end
-  end
-
-  for i = 1, 4 do
-      if VoiceSFX:IsPlaying(Isaac.GetSoundIdByName("DADS_NOTE_KOREAN_" .. i)) then
-          RenderSub("backwards" .. i)
-      end
+    end
   end
 end
+
 mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateMessage)
+mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateMessage2)
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage)
+mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage2)
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, checkLanguage)
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, onRender)
 
 
 -- EZITEMS 관련
-local jsonData = json.decode(data)
-
 local changes = {
   items = {},
   trinkets = {}
