@@ -7,19 +7,21 @@ local SubSprite = Sprite()
 local VoiceSFX = SFXManager()
 
 -- MCM
-local AlertSettings = {
-  enableAlert = true
-}
+-- local AlertSettings = {
+--   enableAlert = true
+-- }
+--
+-- if ModConfigMenu then
+--   ModConfigMenu.AddSetting("KLP", "Alert Settings", {
+--       Type = ModConfigMenu.OptionType.BOOLEAN,
+--       CurrentSetting = function() return AlertSettings.enableAlert end,
+--       Display = function() return "Alert: " .. (AlertSettings.enableAlert and "Enable" or "Disable") end,
+--       OnChange = function(val) AlertSettings.enableAlert = val end,
+--       Info = {"!!! This is not working! just test !!!\n!!! This is not working! just test !!!\nGet notified when important changes are made."}
+--   })
+-- end
 
-if ModConfigMenu then
-  ModConfigMenu.AddSetting("KLP", "Alert Settings", {
-      Type = ModConfigMenu.OptionType.BOOLEAN,
-      CurrentSetting = function() return AlertSettings.enableAlert end,
-      Display = function() return "Alert: " .. (AlertSettings.enableAlert and "Enable" or "Disable") end,
-      OnChange = function(val) AlertSettings.enableAlert = val end,
-      Info = {"!!! This is not working! just test !!!\n!!! This is not working! just test !!!\nGet notified when important changes are made."}
-  })
-end
+KoreanLocalizingPlus = RegisterMod("Korean Localizing Plus", 1)
 
 -- 한국어가 아닙니다!
 local font = Font()
@@ -79,16 +81,19 @@ end
 
 local function renderMessage2()
   local renderMessageWidth
-  if showMessage2 then
+  if not showMessage and showMessage2 then
     if Options.MaxScale == 3 and Options.Fullscreen == true then
       renderMessageWidth = 0.66666
       renderMessageY = 242
+      renderMessageY2 = 254
     else
       renderMessageWidth = 0.5
       renderMessageY = 240
+      renderMessageY2 = 250
     end
     font:DrawStringScaledUTF8("한국어 더빙 기능이 다른 모드로 분리되었습니다! https://steamcommunity.com/workshop/filedetails/?id=3360615255",10,230,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
-    font:DrawStringScaledUTF8("이 메시지는 11월 18일까지 표시됩니다. 한국어 더빙 모드를 설치하시면 이 메시지는 표시되지 않습니다.",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("보스명 교체에 대한 설문조사가 진행 중입니다! https://gall.dcinside.com/m/tboi/128736",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("이 메시지는 11월 18일까지 게임 시작 후 3초간 표시됩니다.",10,renderMessageY2,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
   end
 end
 
@@ -338,11 +343,11 @@ function mod:onUpdate()
     local pillAnimation = pillAnimations[activePillEffect]
         
     if pillAnimation and (pillUsedEffects[activePillEffect] or hasPHD or hasFalsePHD) then
-        if not currentPillSprite or not currentPillSprite:IsPlaying(pillAnimation) then
-            currentPillSprite = Sprite()
-            currentPillSprite:Load(pillFiles[activePillEffect], true)
-            currentPillSprite:Play(pillAnimation, true)
-        end
+      if not currentPillSprite or not currentPillSprite:IsPlaying(pillAnimation) then
+        currentPillSprite = Sprite()
+        currentPillSprite:Load(pillFiles[activePillEffect], true)
+        currentPillSprite:Play(pillAnimation, true)
+      end
     else
         currentPillSprite = nil
     end
@@ -384,10 +389,6 @@ function mod:onGameStart(isContinued)
   pillUsedEffects = {}
 end
 
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.onUpdate)
-mod:AddCallback(ModCallbacks.MC_POST_RENDER, mod.onRender)
-mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.onGameStart)
-
 local pillNames = {
   [PillEffect.PILLEFFECT_X_LAX] = "설사약",
   [PillEffect.PILLEFFECT_HORF] = "퉤엣!",
@@ -413,4 +414,7 @@ function mod:onEvaluatePill(pillEffect)
   pillUsedEffects[pillEffect] = true
 end
 
+mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.onUpdate)
+mod:AddCallback(ModCallbacks.MC_POST_RENDER, mod.onRender)
+mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.onGameStart)
 mod:AddCallback(ModCallbacks.MC_USE_PILL, mod.onEvaluatePill)
