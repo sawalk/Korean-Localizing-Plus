@@ -91,9 +91,8 @@ local function renderMessage2()
       renderMessageY = 240
       renderMessageY2 = 250
     end
-    font:DrawStringScaledUTF8("한국어 더빙 기능이 다른 모드로 분리되었습니다! https://steamcommunity.com/workshop/filedetails/?id=3360615255",10,230,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
-    font:DrawStringScaledUTF8("보스명 교체에 대한 설문조사가 진행 중입니다! https://gall.dcinside.com/m/tboi/128736",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
-    font:DrawStringScaledUTF8("이 메시지는 11월 18일까지 게임 시작 후 3초간 표시됩니다.",10,renderMessageY2,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("보스명 교체에 대한 2차 설문이 진행 중입니다! https://gall.dcinside.com/m/tboi/129340",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("이 메시지는 11월 25일까지 게임 시작 후 3초간 표시됩니다.",10,renderMessageY2,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
   end
 end
 
