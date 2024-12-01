@@ -5,21 +5,7 @@ local jsonData = json.decode(data)
 local game = Game()
 local SubSprite = Sprite()
 local VoiceSFX = SFXManager()
-
--- MCM
--- local AlertSettings = {
---   enableAlert = true
--- }
---
--- if ModConfigMenu then
---   ModConfigMenu.AddSetting("KLP", "Alert Settings", {
---       Type = ModConfigMenu.OptionType.BOOLEAN,
---       CurrentSetting = function() return AlertSettings.enableAlert end,
---       Display = function() return "Alert: " .. (AlertSettings.enableAlert and "Enable" or "Disable") end,
---       OnChange = function(val) AlertSettings.enableAlert = val end,
---       Info = {"!!! This is not working! just test !!!\n!!! This is not working! just test !!!\nGet notified when important changes are made."}
---   })
--- end
+mod.repplus = FontRenderSettings ~= nil
 
 KoreanLocalizingPlus = RegisterMod("Korean Localizing Plus", 1)
 
@@ -29,18 +15,18 @@ font:Load("font/cjk/lanapixel.fnt")
 
 local showMessage = false
 local showMessage2
-if KoreanVoiceDubbing then
-  showMessage2 = false
-else
+if mod.repplus then
   showMessage2 = true
+else
+  showMessage2 = false
 end
 local messageTime = 150
-local messageTime2 = 150
+local messageTime2 = 15000
 local messageDisplayedTime = 0
 local messageDisplayedTime2 = 0
 
 local function checkLanguage()
-  if Options.Language ~= "kr" then
+  if Options.Language ~= "kr" and not mod.repplus then
     print("\n\n[Korean Localizing Plus]\nPlaying in a language other than Korean is not recommended!\nPlease turn off the Korean Localizing Plus,\nset the language to Korean,\nand turn the Korean Localizing Plus back on.\n")
     showMessage = true
   end
@@ -66,13 +52,15 @@ end
 
 local function renderMessage()
   local renderMessageWidth
-  if showMessage then
+  if showMessage and not mod.repplus then
     if Options.MaxScale == 3 and Options.Fullscreen == true then
       renderMessageWidth = 0.66666
       renderMessageY = 242
+      renderMessageY4 = 254
     else
       renderMessageWidth = 0.5
       renderMessageY = 240
+      renderMessageY4 = 250
     end
     font:DrawStringScaledUTF8("한국어 번역+가 한국어가 아닌 환경에서 실행되었습니다!",10,230,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
     font:DrawStringScaledUTF8("모드를 끄고 언어를 한국어로 설정한 뒤 다시 모드를 켜주세요.",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
@@ -81,7 +69,7 @@ end
 
 local function renderMessage2()
   local renderMessageWidth
-  if not showMessage and showMessage2 then
+  if showMessage2 then
     if Options.MaxScale == 3 and Options.Fullscreen == true then
       renderMessageWidth = 0.66666
       renderMessageY = 242
@@ -91,8 +79,12 @@ local function renderMessage2()
       renderMessageY = 240
       renderMessageY2 = 250
     end
-    font:DrawStringScaledUTF8("보스명 교체에 대한 2차 설문이 진행 중입니다! https://gall.dcinside.com/m/tboi/129340",10,renderMessageY,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
-    font:DrawStringScaledUTF8("이 메시지는 11월 25일까지 게임 시작 후 3초간 표시됩니다.",10,renderMessageY2,renderMessageWidth,renderMessageWidth,KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("한국어 번역+는 리펜턴스+와 호환되지 않습니다.",10,renderMessageY2,(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+    if REPKOR then
+      font:DrawStringScaledUTF8("즉시 게임을 중단하고 한국어 번역+를 적용 해제하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+    else
+      font:DrawStringScaledUTF8("리펜턴스+에서 한국어로 플레이하려면 리펜턴스+ 한글패치(창작마당)를 설치하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+    end
   end
 end
 

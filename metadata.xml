@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-    <name>z Korean Localizing Plus</name>
+    <name>z Korean Localizing Plus [Only REP]</name>
     <directory>! korean localizing plus</directory>
     <id>3124459064</id>
-    <description>[b] !!!This mode is for Koreans only. Change your Steam language to Korean to view the mod description!!! [/b]</description>
-    <version>1.72</version>
+    <description>[b] !!!This mod is for Koreans only. Change your Steam language to Korean to view the mod description!!! [/b]</description>
+    <version>1.75</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
+    <tag id="Tweaks"/>
     <tag id="Graphics"/>
     <tag id="Sound Effects"/>
 </metadata>
