@@ -5,7 +5,7 @@ local jsonData = json.decode(data)
 local game = Game()
 local SubSprite = Sprite()
 local VoiceSFX = SFXManager()
-mod.repplus = FontRenderSettings ~= nil
+mod.repplus = REPENTANCE_PLUS or FontRenderSettings ~= nil
 
 KoreanLocalizingPlus = RegisterMod("Korean Localizing Plus", 1)
 
