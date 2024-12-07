@@ -79,11 +79,11 @@ local function renderMessage2()
       renderMessageY = 240
       renderMessageY2 = 250
     end
-    font:DrawStringScaledUTF8("한국어 번역+는 리펜턴스+와 호환되지 않습니다.",10,renderMessageY2,(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+    font:DrawStringScaledUTF8("한국어 번역+는 리펜턴스+와 호환되지 않습니다.",10,renderMessageY2,(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     if REPKOR then
-      font:DrawStringScaledUTF8("즉시 게임을 중단하고 한국어 번역+를 적용 해제하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+      font:DrawStringScaledUTF8("즉시 게임을 중단하고 한국어 번역+를 적용 해제하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     else
-      font:DrawStringScaledUTF8("리펜턴스+에서 한국어로 플레이하려면 리펜턴스+ 한글패치(창작마당)를 설치하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,1,1,1),0,true)
+      font:DrawStringScaledUTF8("리펜턴스+에서 한국어로 플레이하려면 리펜턴스+ 한글패치(창작마당)를 설치하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     end
   end
 end
