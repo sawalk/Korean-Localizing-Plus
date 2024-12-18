@@ -1,29 +1,23 @@
 local mod = RegisterMod("Korean Localizing Plus", 1)
-local data = include('data')
-local json = require('json')
-local jsonData = json.decode(data)
-local game = Game()
-local SubSprite = Sprite()
-local VoiceSFX = SFXManager()
-mod.repplus = REPENTANCE_PLUS or FontRenderSettings ~= nil
+KoreanLocalizingPlus = mod
 
-KoreanLocalizingPlus = RegisterMod("Korean Localizing Plus", 1)
-
--- 한국어가 아닙니다!
+-- 경고 메시지
 local font = Font()
 font:Load("font/cjk/lanapixel.fnt")
 
 local showMessage = false
 local showMessage2
+
+mod.repplus = REPENTANCE_PLUS or FontRenderSettings ~= nil
+
 if mod.repplus then
   showMessage2 = true
 else
   showMessage2 = false
 end
+
 local messageTime = 150
-local messageTime2 = 15000
 local messageDisplayedTime = 0
-local messageDisplayedTime2 = 0
 
 local function checkLanguage()
   if Options.Language ~= "kr" and not mod.repplus then
@@ -41,17 +35,11 @@ local function updateMessage()
   end
 end
 
-local function updateMessage2()
-  if showMessage2 then
-    messageDisplayedTime2 = messageDisplayedTime2 + 1
-    if messageDisplayedTime2 >= messageTime2 then
-      showMessage2 = false
-    end
-  end
-end
-
 local function renderMessage()
-  local renderMessageWidth
+  local renderMessageWidth = 0.5
+  local renderMessageY = 240
+  local renderMessageY4 = 250
+
   if showMessage and not mod.repplus then
     if Options.MaxScale == 3 and Options.Fullscreen == true then
       renderMessageWidth = 0.66666
@@ -68,7 +56,6 @@ local function renderMessage()
 end
 
 local function renderMessage2()
-  local renderMessageWidth
   if showMessage2 then
     if Options.MaxScale == 3 and Options.Fullscreen == true then
       renderMessageWidth = 0.66666
@@ -81,14 +68,23 @@ local function renderMessage2()
     end
     font:DrawStringScaledUTF8("한국어 번역+는 리펜턴스+와 호환되지 않습니다.",10,renderMessageY2,(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     if REPKOR then
-      font:DrawStringScaledUTF8("즉시 게임을 중단하고 한국어 번역+를 적용 해제하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
+      font:DrawStringScaledUTF8("게임에서 퇴장한 뒤 모드 메뉴에서 z_Korean Localizing Plus를 적용 해제해 주세요!",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     else
-      font:DrawStringScaledUTF8("리펜턴스+에서 한국어로 플레이하려면 리펜턴스+ 한글패치(창작마당)를 설치하십시오.",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
+      font:DrawStringScaledUTF8("리펜턴스+에서 한국어로 플레이하려면 리펜턴스+ 한글패치(창작마당)를 설치하세요!",10,(renderMessageY2 + 24),(renderMessageWidth * 2),(renderMessageWidth * 2),KColor(1,0,0,1),0,true)
     end
   end
 end
 
+mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, checkLanguage)
+mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateMessage)
+mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage)
+mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage2)
+
+
 -- (구)리펜턴스 한국어 모드
+local SubSprite = Sprite()
+local VoiceSFX = SFXManager()
+
 if KoreanFontChange then
   SubSprite:Load("gfx/cutscenes/backwards_kfc.anm2", true)
 else
@@ -135,15 +131,15 @@ local function onRender()
   end
 end
 
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateMessage)
-mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateMessage2)
-mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage)
-mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderMessage2)
-mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, checkLanguage)
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, onRender)
 
 
 -- EZITEMS 관련
+local game = Game()
+local data = include('data')
+local json = require('json')
+local jsonData = json.decode(data)
+
 local changes = {
   items = {},
   trinkets = {}
