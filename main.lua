@@ -196,7 +196,8 @@ local itemVariants = {
   items = 100,
   trinkets = 350
 }
-local function updateEid ()
+
+--[[ local function updateEid ()
   for type, itemTypeData in pairs(changes) do
     for id, itemData in pairs(itemTypeData) do
       EID:addDescriptionModifier(
@@ -206,7 +207,7 @@ local function updateEid ()
       )
     end
   end
-end
+end --]]
 
 local function checkConflicts()
   for type, itemTypeData in pairs(changes) do
@@ -240,9 +241,9 @@ end
 parseJsonData()
 checkConflicts()
 
-if EID then
+--[[ if EID then
   updateEid()
-end
+end --]]
 
 if next(changes.trinkets) ~= nil then
   local t_queueLastFrame
