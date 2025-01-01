@@ -222,18 +222,29 @@ end
 if next(changes.items) ~= nil then
     local i_queueLastFrame = {}
     local i_queueNow = {}
+    local birthrightDesc = include("data_birthrightDesc")
+    
     mod:AddCallback(
         ModCallbacks.MC_POST_PLAYER_UPDATE,
- 
+
         ---@param player EntityPlayer
         function(_, player)
             local playerKey = tostring(player.InitSeed)
             
             i_queueNow[playerKey] = player.QueuedItem.Item
-            if (i_queueNow[playerKey] ~= nil) then
-                local item = changes.items[tostring(i_queueNow[playerKey].ID)]
-                if item and i_queueNow[playerKey]:IsCollectible() and i_queueLastFrame[playerKey] == nil then
-                    game:GetHUD():ShowItemText(item.name, item.description)
+            if i_queueNow[playerKey] and i_queueNow[playerKey]:IsCollectible() and i_queueLastFrame[playerKey] == nil then
+                local itemID = i_queueNow[playerKey].ID
+                if itemID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then   -- 생득권이라면
+                    local b_playerType = player:GetPlayerType()
+                    local b_description = birthrightDesc[b_playerType]
+                    if b_description then
+                        Game():GetHUD():ShowItemText("생득권", b_description or "???")
+                    end
+                else
+                    local item = changes.items[tostring(itemID)]   -- 일반 아이템이라면
+                    if item then
+                        Game():GetHUD():ShowItemText(item.name, item.description)
+                    end
                 end
             end
             i_queueLastFrame[playerKey] = i_queueNow[playerKey]
