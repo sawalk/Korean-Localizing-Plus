@@ -1,7 +1,7 @@
 local mod = RegisterMod("Korean Localizing Plus", 1)
 KoreanLocalizingPlus = mod
 
--- 경고 메시지
+------ 경고 메시지 ------
 mod.repplus = REPENTANCE_PLUS or FontRenderSettings ~= nil
 local notKorean = Options.Language ~= "kr"
 local function checkLanguage()
@@ -68,7 +68,7 @@ mod:AddCallback(ModCallbacks.MC_POST_UPDATE, updateAnm2)
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, renderAnm2)
 
 
--- 아빠의 쪽지 자막 by blackcreamtea
+------ 아빠의 쪽지 자막 by blackcreamtea ------
 local function GetScreenSize()
     local pos = Game():GetRoom():WorldToScreenPosition(Vector(0,0)) - Game():GetRoom():GetRenderScrollOffset() - Game().ScreenShakeOffset
 
@@ -104,7 +104,7 @@ end
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, onRender)
 
 
--- EZITEMS by ddeeddii
+------ EZITEMS by ddeeddii ------
 local game = Game()
 local data = include('data')
 local json = require('json')
@@ -253,7 +253,77 @@ if next(changes.items) ~= nil then
 end
 
 
--- 알약 관련 코드
+------ 사해사본 by siraxtas ------
+function mod:FakeDeadSeaScrolls(item, rng)
+    for _, player in pairs(Isaac.FindByType(EntityType.ENTITY_PLAYER, -1, -1, false, false)) do
+        local pData = player:GetData()
+        player = player:ToPlayer()
+        if player:GetActiveItem() == CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS then
+            if item ~= CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS then                 -- 사해사본을 소지하지 않은 상태에서
+                local deadSeaScrollsData = jsonData.items[tostring(item)]                -- 와일드 카드/보이드로 사해사본을 발동하면 번역되지 않는 문제 있음
+                if deadSeaScrollsData then                                               -- 근데 누가 와일드 카드 그 아까운 걸 사해사본으로 씀
+                    Game():GetHUD():ShowItemText(deadSeaScrollsData.name)
+                    pData.deadSeaScrollsIndicator_time = Game():GetFrameCount()
+                else
+                    Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "모드 제작자에게 연락바람")
+                end
+            end
+        end
+    end
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.FakeDeadSeaScrolls)
+
+
+------ 레메게톤 ------
+------ To modders who want to reference this code. THIS CODE IS UNSTABLE!!! DROP THAT IDEA RIGHT NOW!!!
+local w_queueLastFrame = {}
+local w_queueNow = {}
+local delayedWisps = {}
+local gameStarted = false   -- 게임 시작 시 초기화용
+
+local function WispText(familiar)
+    local familiarKey = tostring(familiar.InitSeed)
+    local WispID = familiar.SubType
+    
+    w_queueNow[familiarKey] = WispID
+    if WispID > 0 and w_queueLastFrame[familiarKey] == nil then
+        local wisp = changes.items[tostring(WispID)]
+        if wisp then
+            Game():GetHUD():ShowItemText(wisp.name or "일종의 오류발생 메시지", wisp.description or "모드 제작자에게 연락바람")
+        else
+            print("[ Korean Localizing Plus ]\n" .. tostring(WispID) .. "번 아이템이 모드 아이템이거나 플레이어가 2인 이상인 상태입니다.")
+        end
+    end
+    w_queueLastFrame[familiarKey] = w_queueNow[familiarKey]
+end
+
+function mod:ResetWispData()
+    gameStarted = true
+    delayedWisps = {}
+end
+
+function mod:DetectWisp(familiar)
+    if familiar.Type == 3 and familiar.Variant == 237 and gameStarted then
+        local wispData = familiar:GetData()
+        if familiar.Position:Distance(Vector(-1000, -1000)) < 1 then return end     -- 임시방편. HiddenItemManager를 사용하는 모드와 충돌 방지
+        table.insert(delayedWisps, familiar)
+    end
+end
+
+function mod:ShowWispText()
+    if #delayedWisps > 0 then
+        WispText(delayedWisps[1])   -- 1프레임 지연 실행
+        table.remove(delayedWisps, 1)
+    end
+end
+
+mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.ResetWispData)
+mod:AddCallback(ModCallbacks.MC_FAMILIAR_INIT, mod.DetectWisp)
+mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.ShowWispText)
+
+
+------ 알약 관련 코드 ------
 local pillFiles = {}
 
 if KoreanFontChange then
