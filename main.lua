@@ -254,25 +254,82 @@ end
 
 
 ------ 사해사본 by siraxtas ------
-function mod:FakeDeadSeaScrolls(item, rng)
-    for _, player in pairs(Isaac.FindByType(EntityType.ENTITY_PLAYER, -1, -1, false, false)) do
-        local pData = player:GetData()
-        player = player:ToPlayer()
-        if player:GetActiveItem() == CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS then
-            if item ~= CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS then                 -- 사해사본을 소지하지 않은 상태에서
-                local deadSeaScrollsData = jsonData.items[tostring(item)]                -- 와일드 카드/보이드로 사해사본을 발동하면 번역되지 않는 문제 있음
-                if deadSeaScrollsData then                                               -- 근데 누가 와일드 카드 그 아까운 걸 사해사본으로 씀
-                    Game():GetHUD():ShowItemText(deadSeaScrollsData.name)
-                    pData.deadSeaScrollsIndicator_time = Game():GetFrameCount()
-                else
-                    Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "모드 제작자에게 연락바람")
-                end
-            end
+local deadSeaScrolls = CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS
+local deadSeaScrollsList = {34,35,37,38,39,41,42,44,45,56,49,58,77,65,66,78,83,84,85,86,93,97,107,102,47,123,136,146,158,160,171,192}
+
+local function getNextDeadSeaScrollsItem(rng)
+    return deadSeaScrollsList[rng:RandomInt(#deadSeaScrollsList) + 1]
+end
+
+local lastPredictedID = nil
+local activePredictor = {
+    [deadSeaScrolls] = getNextDeadSeaScrollsItem,
+}
+
+local function PredictDeadSeaScrolls(player)
+    local predFunc = activePredictor[deadSeaScrolls]
+    if predFunc then
+        local rng = RNG()
+        rng:SetSeed(player:GetCollectibleRNG(deadSeaScrolls):GetSeed(), 35)
+        lastPredictedID = predFunc(rng)
+    end
+end
+
+local function FakeDeadSeaScrolls()
+    if lastPredictedID and lastPredictedID ~= 0 then
+        local deadSeaScrollsData = jsonData.items[tostring(lastPredictedID)]
+        if deadSeaScrollsData and mod.offline then
+            Game():GetHUD():ShowItemText(deadSeaScrollsData.name)
+        else
+            Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "모드 제작자에게 연락바람")
         end
     end
 end
 
-mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.FakeDeadSeaScrolls)
+mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function(_, player)
+    PredictDeadSeaScrolls(player)
+end)
+
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, function(_, item, rng, player, flags)
+    if item == deadSeaScrolls then
+        FakeDeadSeaScrolls()
+        PredictDeadSeaScrolls(player)
+    end
+    return true
+end, deadSeaScrolls)
+
+
+------ 제작 가방 ------
+if EID then
+    local previousBagItems = {}
+    local lastPlayerType = -1
+
+    local function ShowCraftedItem(player)
+        local recipeID = EID:calculateBagOfCrafting(previousBagItems)
+        local BoCItems = jsonData.items[tostring(recipeID)]
+        
+        if mod.offline then
+            Game():GetHUD():ShowItemText(BoCItems.name, BoCItems.description)
+        end
+    end
+
+    mod:AddCallback(ModCallbacks.MC_POST_UPDATE, function()
+        if Isaac.GetPlayer(0):GetPlayerType() ~= lastPlayerType then
+            previousBagItems = {}
+            lastPlayerType = Isaac.GetPlayer(0):GetPlayerType()
+        end
+
+        if lastPlayerType ~= 23 then return end   -- 더렵하진 카인이 아니면 종료
+
+        local currentBagCount = #EID.BoC.BagItems
+        if #previousBagItems == 8 and currentBagCount == 0 then
+            ShowCraftedItem()
+        end
+        previousBagItems = EID.BoC.BagItems
+    end)
+else
+    Isaac.DebugString("EID가 설치되지 않았습니다. 더럽혀진 카인이 아이템을 획득해도 그 아이템의 이름과 설명은 번역되지 않습니다.")
+end
 
 
 ------ 레메게톤 ------
