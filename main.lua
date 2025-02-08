@@ -239,7 +239,7 @@ if next(changes.items) ~= nil then
                     local b_description = birthrightDesc[b_playerType]
                     if b_description then
                         Game():GetHUD():ShowItemText("생득권", b_description or "???")
-                    end
+                    end 
                 else
                     local item = changes.items[tostring(itemID)]   -- 일반 아이템이라면
                     if item then
@@ -278,7 +278,7 @@ end
 local function FakeDeadSeaScrolls()
     if lastPredictedID and lastPredictedID ~= 0 then
         local deadSeaScrollsData = jsonData.items[tostring(lastPredictedID)]
-        if deadSeaScrollsData and mod.offline then
+        if deadSeaScrollsData then
             Game():GetHUD():ShowItemText(deadSeaScrollsData.name)
         else
             Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "모드 제작자에게 연락바람")
@@ -308,7 +308,7 @@ if EID then
         local recipeID = EID:calculateBagOfCrafting(previousBagItems)
         local BoCItems = jsonData.items[tostring(recipeID)]
         
-        if mod.offline then
+        if BoCItems then
             Game():GetHUD():ShowItemText(BoCItems.name, BoCItems.description)
         end
     end
