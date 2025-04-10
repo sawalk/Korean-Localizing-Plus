@@ -222,6 +222,8 @@ end
 if next(changes.items) ~= nil then
     local i_queueLastFrame = {}
     local i_queueNow = {}
+
+    local gFuelDesc = include('data_gFuelDesc')
     local birthrightDesc = include("data_birthrightDesc")
     
     mod:AddCallback(
@@ -234,7 +236,13 @@ if next(changes.items) ~= nil then
             i_queueNow[playerKey] = player.QueuedItem.Item
             if i_queueNow[playerKey] and i_queueNow[playerKey]:IsCollectible() and i_queueLastFrame[playerKey] == nil then
                 local itemID = i_queueNow[playerKey].ID
-                if itemID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then   -- 생득권이라면
+                if itemID == -1 then   -- G FUEL!
+                    local g_random = math.random(1, 50)
+                    local g_description = gFuelDesc[g_random]
+                    if g_description then
+                        Game():GetHUD():ShowItemText("G FUEL!", g_description or "일종의 오류발생 메시지. 한국어 번역+ 제작자에게 연락바람")
+                    end
+                elseif itemID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then   -- 생득권이라면
                     local b_playerType = player:GetPlayerType()
                     local b_description = birthrightDesc[b_playerType]
                     if b_description then
