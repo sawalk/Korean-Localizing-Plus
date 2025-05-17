@@ -106,7 +106,7 @@ mod:AddCallback(ModCallbacks.MC_POST_RENDER, onRender)
 
 ------ EZITEMS by ddeeddii ------
 local game = Game()
-local data = include('data')
+local data = include('include.data')
 local json = require('json')
 local jsonData = json.decode(data)
 
@@ -223,8 +223,8 @@ if next(changes.items) ~= nil then
     local i_queueLastFrame = {}
     local i_queueNow = {}
 
-    local gFuelDesc = include('data_gFuelDesc')
-    local birthrightDesc = include("data_birthrightDesc")
+    local gFuelDesc = include('include.data_gFuelDesc')
+    local birthrightDesc = include("include.data_birthrightDesc")
     
     mod:AddCallback(
         ModCallbacks.MC_POST_PLAYER_UPDATE,

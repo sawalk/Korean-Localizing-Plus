@@ -3,8 +3,46 @@
     <name>z Korean Localizing Plus [Only REP]</name>
     <directory>! korean localizing plus</directory>
     <id>3124459064</id>
-    <description>[b] !!!This mod is for Koreans only. Change your Steam language to Korean to view the mod description!!! [/b]</description>
-    <version>1.87</version>
+    <description>[code][b][h2] !!!리펜턴스+와 호환되지 않습니다. 본 모드는 리펜턴스 전용입니다!!! [/h2]
+[h2] !!!리펜턴스+ 한글패치는 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3371064337]여기[/url]로!!! [/h2][/b][/code]
+
+[img]https://i.imgur.com/qNIBKvT.png[/img]
+[h2] [b] 소개 [/b] [/h2]
+한국어 번역+ 모드는 리펜턴스의 오역과 아쉬운 번역을 고치고, 누락된 자막, 새로운 더빙, 개선된 폰트 등 더 높은 품질의 한국어 번역을 제공하는 모드입니다. 다른 모드와의 충돌을 최대한 적게하는 유일한 번역 개선 모드입니다!
+
+[b] 꼭 설정에서 언어를 한국어로 설정한 뒤에 모드를 구독하세요! 모든 언어 환경에서 아래와 같이 게임이 패치되며, 한국어 외 언어로 플레이한다면 이 모드를 끄고 플레이하는 것을 극히 권장합니다. [/b]
+
+[h2] [b] 기능 [/b] [/h2]
+[list]
+[*] [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]오프닝, 에필로그, 엔딩 21, 최종 엔딩 한국어 더빙 추가[/url] ¹
+[*] 아빠의 쪽지의 &quot;Ascent&quot; 시퀀스 [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]한국어 더빙[/url] &amp; 자막 추가 ²
+[*] 메인 메뉴 한국어 로고 적용 ²
+[*] 컷신 영어 식자 자막 추가
+[*] 보스 입장 컷신 이름의 안티에일리어싱 수정
+[*] &quot;바빌론의 창녀&quot;의 효과가 깨지는 애니메이션 수정
+[*] 난이도 스프라이트 위치 조정
+[*] [url=https://steamcommunity.com/workshop/filedetails/?id=3322498790]폰트 교체[/url] ³
+[img]https://i.imgur.com/o29Li2s.png[/img]
+[*] [url=https://n.lrl.kr/SYLH4Y]번역 수정 및 보강[/url]⁴ ⁵ ⁶ ⁷
+[/list]
+
+[hr][/hr]
+[olist]
+[*]Respect to [url=https://twitter.com/youknow4pril]윤호[/url] and [url=https://www.youtube.com/@%EC%B9%A9%EC%8A%A4]Chips[/url]. [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]한국어 더빙 모드[/url]를 구독 해제하여 영어 음성으로 들으실 수 있습니다. 자세한 내용은 한국어 더빙 모드 페이지를 참고하세요.
+
+[*]Original by Blackcreamtea. 자막의 경우 '(따옴표) 키를 통해 자막을 끄거나 켤 수 있습니다.
+
+[*][url=https://steamcommunity.com/workshop/filedetails/?id=3322498790]한국어 폰트 교체 모드[/url]를 구독 해제하여 기존 폰트로 이용할 수 있습니다.
+
+[*]아이템 이름 변경 기능은 [url=https://github.com/ddeeddii/eztools]Eztools(by ddeeddii)[/url]&amp; [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2093082675]Dead sea scrolls indicator(코드 일부 발췌, by siraxtas)[/url]을 사용하였습니다. 아이템 이름은 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=836319872]아이템 설명모드[/url]에서도 이름이 변경됩니다. 통계의 &quot;아이템&quot; 메뉴에선 번역 수정 기능이 반영되지 않습니다.
+
+[*]기술적 문제로 인게임 HUD의 우측 하단에 위치한 픽업 슬롯에선 기존 명칭이 표시됩니다. 대신 소지 중인 알약이 Tears/Shot Speed 알약이라면 알약 이름 왼쪽에 각각 &quot;(연사)&quot;, &quot;(탄속)&quot; 표시가 등장합니다. 야곱 &amp; 에사우 캐릭터의 경우 에사우가 소지한 알약은 해당하지 않으며, 야곱이 소지한 알약은 알약 이름 오른쪽에 표시됩니다.
+
+[*]확인하지 않은 알약에는 ⁵의 표시가 등장하지 않습니다. 게임 종료 후 &quot;계속하기&quot;로 게임을 재개하면 알약의 확인 여부가 초기화됩니다. 박사 학위(PHD)나 위조 박사 학위(False PHD) 소유 시 알약의 확인 여부와 관계없이 등장합니다.
+
+[*]보스명 이름은 (구)리펜턴스 한국어 모드에서 발췌, [url=https://gall.dcinside.com/m/tboi/128736]보스명 교체 투표[/url]에서 선출한 이름입니다.
+[/olist]</description>
+    <version>1.89</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Tweaks"/>
