@@ -21,11 +21,7 @@ end
 
 local sprite = Sprite()
 if notKorean or mod.repplus then
-    if REPENTANCE_PLUS and KoreanFontChange then
-        sprite:Load("gfx/cutscenes/backwards_kfc.anm2", true)
-    else
-        sprite:Load("gfx/ui/popup_warning.anm2", true)   -- 경고 팝업 로드
-    end
+    sprite:Load("gfx/ui/popup_warning.anm2", true)   -- 경고 팝업 로드
 elseif KoreanFontChange then
     sprite:Load("gfx/cutscenes/backwards_kfc.anm2", true)   -- 아빠의 쪽지 자막 로드(한국어 폰트 변경)
 else
