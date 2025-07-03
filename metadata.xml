@@ -18,12 +18,10 @@
 [*] 아빠의 쪽지의 &quot;Ascent&quot; 시퀀스 [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]한국어 더빙[/url] &amp; 자막 추가 ²
 [*] 메인 메뉴 한국어 로고 적용 ²
 [*] 컷신 영어 식자 자막 추가
-[*] 보스 입장 컷신 이름의 안티에일리어싱 수정
-[*] &quot;바빌론의 창녀&quot;의 효과가 깨지는 애니메이션 수정
-[*] 난이도 스프라이트 위치 조정
+[*] 여러 UI 그래픽의 디테일 보강
 [*] [url=https://steamcommunity.com/workshop/filedetails/?id=3322498790]폰트 교체[/url] ³
 [img]https://i.imgur.com/o29Li2s.png[/img]
-[*] [url=https://n.lrl.kr/SYLH4Y]번역 수정 및 보강[/url]⁴ ⁵ ⁶ ⁷
+[*] [url=https://n.lrl.kr/SYLH4Y]대대적인 번역 보강[/url]⁴ ⁵ ⁶ ⁷
 [/list]
 
 [hr][/hr]
@@ -41,8 +39,8 @@
 [*]확인하지 않은 알약에는 ⁵의 표시가 등장하지 않습니다. 게임 종료 후 &quot;계속하기&quot;로 게임을 재개하면 알약의 확인 여부가 초기화됩니다. 박사 학위(PHD)나 위조 박사 학위(False PHD) 소유 시 알약의 확인 여부와 관계없이 등장합니다.
 
 [*]보스명 이름은 (구)리펜턴스 한국어 모드에서 발췌, [url=https://gall.dcinside.com/m/tboi/128736]보스명 교체 투표[/url]에서 선출한 이름입니다.
-[/olist]</description>
-    <version>1.91</version>
+[/olist]Changed the bosses' name graphics to a repentance style.</description>
+    <version>1.94</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Tweaks"/>

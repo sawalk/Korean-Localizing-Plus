@@ -210,7 +210,7 @@ if next(changes.trinkets) ~= nil then
             t_queueNow[playerKey] = player.QueuedItem.Item
             if (t_queueNow[playerKey] ~= nil) then
                 local trinket = changes.trinkets[tostring(t_queueNow[playerKey].ID)]
-                if trinket and t_queueNow[playerKey]:IsTrinket() and t_queueLastFrame[playerKey] == nil then
+                if trinket and t_queueNow[playerKey]:IsTrinket() and t_queueLastFrame[playerKey] == nil and not REPENTOGON then
                     game:GetHUD():ShowItemText(trinket.name, trinket.description)
                 end
             end
@@ -250,7 +250,7 @@ if next(changes.items) ~= nil then
                     end 
                 else
                     local item = changes.items[tostring(itemID)]   -- 일반 아이템이라면
-                    if item then
+                    if item and not REPENTOGON then
                         Game():GetHUD():ShowItemText(item.name, item.description)
                     end
                 end
@@ -261,35 +261,34 @@ if next(changes.items) ~= nil then
 end
 
 
------- 사해사본 by siraxtas ------
-local deadSeaScrolls = CollectibleType.COLLECTIBLE_DEAD_SEA_SCROLLS
+------ 사해사본 by 双笙子佯谬 ------
 local deadSeaScrollsList = {34,35,37,38,39,41,42,44,45,56,49,58,77,65,66,78,83,84,85,86,93,97,107,102,47,123,136,146,158,160,171,192}
 
 local function getNextDeadSeaScrollsItem(rng)
     return deadSeaScrollsList[rng:RandomInt(#deadSeaScrollsList) + 1]
 end
 
-local lastPredictedID = nil
+local lastPredictedID = nil    -- 마지막으로 예측된 아이템 ID 저장
 local activePredictor = {
-    [deadSeaScrolls] = getNextDeadSeaScrollsItem,
+    [124] = getNextDeadSeaScrollsItem,
 }
 
 local function PredictDeadSeaScrolls(player)
-    local predFunc = activePredictor[deadSeaScrolls]
+    local predFunc = activePredictor[124]
     if predFunc then
         local rng = RNG()
-        rng:SetSeed(player:GetCollectibleRNG(deadSeaScrolls):GetSeed(), 35)
+        rng:SetSeed(player:GetCollectibleRNG(124):GetSeed(), 35)
         lastPredictedID = predFunc(rng)
     end
 end
 
 local function FakeDeadSeaScrolls()
     if lastPredictedID and lastPredictedID ~= 0 then
-        local deadSeaScrollsData = jsonData.items[tostring(lastPredictedID)]
-        if deadSeaScrollsData then
-            Game():GetHUD():ShowItemText(deadSeaScrollsData.name)
-        else
-            Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "모드 제작자에게 연락바람")
+        local d_data = jsonData.items[tostring(lastPredictedID)]
+        if d_data and not REPENTOGON then
+            Game():GetHUD():ShowItemText(d_data.name)
+        elseif not REPENTOGON then
+            Game():GetHUD():ShowItemText("일종의 오류발생 메시지", "한국어 번역+ 제작자에게 연락바람")
         end
     end
 end
@@ -299,16 +298,16 @@ mod:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function(_, player)
 end)
 
 mod:AddCallback(ModCallbacks.MC_USE_ITEM, function(_, item, rng, player, flags)
-    if item == deadSeaScrolls then
+    if item == 124 then
         FakeDeadSeaScrolls()
         PredictDeadSeaScrolls(player)
     end
     return true
-end, deadSeaScrolls)
+end, 124)
 
 
 ------ 제작 가방 ------
-if EID then
+if EID and not REPENTOGON then
     local previousBagItems = {}
     local lastPlayerType = -1
 
@@ -336,7 +335,7 @@ if EID then
         previousBagItems = EID.BoC.BagItems
     end)
 else
-    Isaac.DebugString("EID가 설치되지 않았습니다. 더럽혀진 카인이 아이템을 획득해도 그 아이템의 이름과 설명은 번역되지 않습니다.")
+    Isaac.DebugString("EID가 설치되지 않았습니다. 더럽혀진 카인이 아이템을 획득해도 그 아이템의 이름과 설명은 오역이 수정되지 않습니다.")
 end
 
 
@@ -354,9 +353,9 @@ local function WispText(familiar)
     w_queueNow[familiarKey] = WispID
     if WispID > 0 and w_queueLastFrame[familiarKey] == nil then
         local wisp = changes.items[tostring(WispID)]
-        if wisp then
-            Game():GetHUD():ShowItemText(wisp.name or "일종의 오류발생 메시지", wisp.description or "모드 제작자에게 연락바람")
-        else
+        if wisp and not REPENTOGON then
+            Game():GetHUD():ShowItemText(wisp.name or "일종의 오류발생 메시지", wisp.description or "한국어 번역+ 제작자에게 연락바람")
+        elseif not REPENTOGON then
             print("[ Korean Localizing Plus ]\n" .. tostring(WispID) .. "번 아이템이 모드 아이템이거나 플레이어가 2인 이상인 상태입니다.")
         end
     end
@@ -508,3 +507,33 @@ mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.onUpdate)
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, mod.onRender)
 mod:AddCallback(ModCallbacks.MC_POST_GAME_STARTED, mod.onGameStart)
 mod:AddCallback(ModCallbacks.MC_USE_PILL, mod.onEvaluatePill)
+
+
+------ REPENTOGON ------
+if REPENTOGON then
+    mod:AddCallback(ModCallbacks.MC_POST_MODS_LOADED, function()
+        local conf = Isaac.GetItemConfig()
+
+        if jsonData.items then
+            for key, entry in pairs(jsonData.items) do
+                local id = tonumber(key)
+                if id and id ~= -1 then
+                    local cfg = conf:GetCollectible(id)
+                    cfg.Name = entry.name
+                    cfg.Description = entry.description
+                end
+            end
+        end
+
+        if jsonData.trinkets then
+            for key, entry in pairs(jsonData.trinkets) do
+                local id = tonumber(key)
+                if id and id ~= -1 then
+                    local cfg = conf:GetTrinket(id)
+                    cfg.Name = entry.name
+                    cfg.Description = entry.description
+                end
+            end
+        end
+    end)
+end
