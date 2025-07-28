@@ -26,7 +26,7 @@
 
 [hr][/hr]
 [olist]
-[*]Respect to [url=https://twitter.com/youknow4pril]윤호[/url] and [url=https://www.youtube.com/@%EC%B9%A9%EC%8A%A4]Chips[/url]. [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]한국어 더빙 모드[/url]를 구독 해제하여 영어 음성으로 들으실 수 있습니다. 자세한 내용은 한국어 더빙 모드 페이지를 참고하세요.
+[*]Respect to [url=https://www.instagram.com/youknow4pril]윤호[/url] and [url=https://www.youtube.com/@칩스]Chips[/url]. [url=https://steamcommunity.com/workshop/filedetails/?id=3360615255]한국어 더빙 모드[/url]를 구독 해제하여 영어 음성으로 들으실 수 있습니다. 자세한 내용은 한국어 더빙 모드 페이지를 참고하세요.
 
 [*]Original by Blackcreamtea. 자막의 경우 '(따옴표) 키를 통해 자막을 끄거나 켤 수 있습니다.
 
@@ -40,10 +40,11 @@
 
 [*]보스명 이름은 (구)리펜턴스 한국어 모드에서 발췌, [url=https://gall.dcinside.com/m/tboi/128736]보스명 교체 투표[/url]에서 선출한 이름입니다.
 [/olist]</description>
-    <version>1.97</version>
+    <version>1.98</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Tweaks"/>
     <tag id="Graphics"/>
     <tag id="Sound Effects"/>
+    <tag id="Music"/>
 </metadata>
